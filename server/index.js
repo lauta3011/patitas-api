@@ -20,19 +20,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/get_posts", cors(), (req, res) => {    
-    db.serialize(() => {
-        db.each("SELECT Titulo, Descripcion FROM Posts", [], (err, rows) => {
-            if (err) {
-              res.status(400).json({"error":err.message});
-              return;
-            }
+    db.all("SELECT Titulo, Descripcion FROM Posts", [], (err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
 
-            res.json({
-                "message":"success",
-                "data":rows
-            })
-        });
-    })
+        res.json({
+            "message":"success",
+            "data":rows
+        })
+    });
 });
 
 app.get("/get_products", (req, res) => {    
