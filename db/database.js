@@ -10,13 +10,13 @@ const db = new sqlite3.Database('./db/refugio-patitas.db', sqlite3.OPEN_READWRIT
             }            
         });
 
-        db.run('CREATE TABLE Productos (Id integer PRIMARY KEY AUTOINCREMENT, Producto text NOT NULL, Descripcion text NOT NULL, Imagen text NOT NULL, Tags text NOT NULL)', (err) => {
+        db.run('CREATE TABLE Productos (Id integer PRIMARY KEY AUTOINCREMENT, Titulo text NOT NULL, Descripcion text NOT NULL, Imagen text NOT NULL, Tags text NOT NULL, Precio integer NOT NULL, Tipo text NOT NULL)', (err) => {
             if(err) {
                 console.log('Table already exists');
             }            
         });
         
-        db.run('CREATE TABLE Mascotas (Id integer PRIMARY KEY AUTOINCREMENT, Mascota text NOT NULL, Descripcion text NOT NULL, Imagen text NOT NULL, Tags text NOT NULL)', (err) => {
+        db.run('CREATE TABLE Mascotas (Id integer PRIMARY KEY AUTOINCREMENT, Titulo text NOT NULL, Descripcion text NOT NULL, Imagen text NOT NULL, Tags text NOT NULL, Edad integer NOT NULL, Ubicacion text NOT NULL)', (err) => {
             if(err) {
                 console.log('Table already exists');
             }            
