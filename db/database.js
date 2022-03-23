@@ -4,11 +4,15 @@ const fs = require('fs')
 if(!fs.existsSync('db/refugio-patitas.db')) {
     fs.writeFileSync('db/refugio-patitas.db', '', (err) => {
         if(err) {
-            console.log('aaaaaaaa error creando file ', err);
+            console.log('ERROR CREATING DB FILE ', err);
             return;
         }
         console.log('DB FILE CREATED');
     })
+}
+
+if(!fs.existsSync('./public')) {
+    fs.mkdirSync('./public');
 }
 
 const db = new sqlite3.Database('./db/refugio-patitas.db', sqlite3.OPEN_READWRITE, (err) => {
